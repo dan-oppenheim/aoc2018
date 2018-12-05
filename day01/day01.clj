@@ -11,14 +11,28 @@
 
 ;; Splits the input and converts each line into an integer, storing the values
 ;; in a vector.
-(def numbers 
+(def changes 
     (for [x (clojure.string/split-lines input)]
         (convert x)))
 
 ;; Get the value of all the inputs combined.
-(println "The final frequency is " (reduce + 0 numbers))
+(println "The final frequency is" (reduce + 0 changes))
 
-;; For part B, read each line, determine the current frequency, then check
-;; for its presence in a set. If it's there, the duplicate frequency has been
-;; found, otherwise add it and carry on.
 
+;; Adds each frequency to a running total until that total is seen twice and 
+;; returns that total.
+(defn find-freq-repeat [changes]
+    (loop 
+        [input (cycle changes) ;; generate an infinite sequence
+         total 0
+         seen #{}]
+    
+        (if (contains? seen total)
+            total
+            (let [newtotal (+ total (first input))]
+            (recur ;; restarts the loop, using the values before its bindings
+                (rest input) ;; all but the first
+                newtotal
+                (conj seen total)))))) ;; append unseen total to seen set
+
+(println "First match is" (find-freq-repeat changes))
