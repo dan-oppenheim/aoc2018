@@ -1,4 +1,4 @@
-;; Advent of Code 2018 - Day 1
+;; Advent of Code 2018 - Day 2
 
 ; Returns true if item's val is a two or three
 (defn two-or-three [item]

@@ -1,3 +1,5 @@
+;; Advent of Code 2018 - Day 1
+
 ;; Transforms the string 's' into an integer, respecting a leading sign.
 (defn convert [s]
     (let [num (Integer/parseInt (subs s 1))]
