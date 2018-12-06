@@ -14,4 +14,6 @@
               :else (recur (inc i) c2)))))
 
 
-(println (single-diff "foo" "fop"))
+;(println (single-diff "foo" "fop")) ; true
+;(println (single-diff "foo" "fpp")) ; false
+;(println (single-diff "foo" "foo")) ; false
