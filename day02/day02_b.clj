@@ -1,3 +1,5 @@
+;; Advent of Code 2018, Day 2 Part B.
+
 ; determine if there is one item difference between equal length sequences
 (defn single-diff [a b count]
     (if (empty? a) (= count 1)
